@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en' style='overflow: hidden;'>
+  <head>
+      <title>Chat room</title>
+      <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' type='text/css'>
+      <link rel='stylesheet' href='https://www.w3schools.com/w3css/4/w3.css' type='text/css'>
+      <link rel='stylesheet' href='client/css/main.css' type='text/css'>
+      <link rel='stylesheet' href='client/css/mobile.css' type='text/css' media='only screen and (max-device-width: 480px)'>
+      <link rel='shortcut icon' href='./favicon.ico'>
+      <link rel='icon' href='./favicon.ico' type='image/x-icon'>
+      <script src='//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+      <script src='/socket.io/socket.io.js'></script>
+      <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+  </head>
+
+  <body>
+    <div class='box' style='overflow:hidden'>
+      <h3>Chat</h3>
+      <div id='name'></div>
+      <div class='chatBox' id='chat-text'></div>
+        <form id='chatForm'>
+          <input id='chat-input' type='text' maxlength='50S' onchange="typing()" style='width:75%;height:30px;' />
+          <input class='btn' type='submit' value='Send' />
+        </form>
+    </div>
+    <div class='sidebar'>
+      <h3>Online</h3>
+      <div class='chatBox' id='nameBox'></div>
+    </div>
+  <script src="client/index.js"></script>
+  </body>
+</html>
