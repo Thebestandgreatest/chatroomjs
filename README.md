@@ -9,3 +9,6 @@
 <p>Responsive css for mobile</p>
 <p>Seperate chat rooms?</p>
 <p>Timestamps for messages</p>
+<h1>How to use</h1>
+<p>Currently designed to be implemented on heroku</p>
+<p>To use locally replace the port declaration at the top of app.js
