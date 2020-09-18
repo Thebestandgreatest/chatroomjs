@@ -7,10 +7,6 @@ var chatNames = document.getElementById('nameBox')
 var socket = io();
 var typing = false;
 
-function typing() {
-
-}
-
 //add a chat cell to chat list view, and scroll to the bottom
 socket.on('addToChat',function(data, name){
   if (name != 'admin') {

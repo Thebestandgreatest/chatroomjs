@@ -8,3 +8,4 @@
 <p>Responsive css for mobile</p>
 <p>Seperate chat rooms?</p>
 <p>Timestamps for messages</p>
+<p>Add admin power to kick people</p>
