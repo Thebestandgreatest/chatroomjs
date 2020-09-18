@@ -7,9 +7,10 @@ var chatNames = document.getElementById('nameBox')
 var socket = io();
 var typing = false;
 
-//add a chat cell to chat list view, and scroll to the bottom
+//add a chat cell to chat list view and scroll to the bottom
 socket.on('addToChat',function(data, name){
   if (name != 'admin') {
+    //if name is admin don't put a name (used for connection messages)
     chatText.innerHTML += '<div style="text-align:left;">' + name + '</div>' + '<div class="chatCell" style="word-wrap: anywhere; text-align: right; padding: 0.5%;">' + data + '</div>';
     chatText.scrollTop = chatText.scrollHeight;
   } else if (name == 'admin') {
@@ -19,7 +20,9 @@ socket.on('addToChat',function(data, name){
   }
 });
 
+//called when sent by server
 socket.on('update-names', function(namelist) {
+  //clears list and redraws it with active users
   chatNames.innerHTML = '';
   for (var i in namelist) {
     chatNames.innerHTML += '<div style="text-align:center;">' + namelist[i];
@@ -55,7 +58,7 @@ document.onkeyup = function(event){
   //pressed enter key
   if(event.keyCode === 13){
     if(!typing){
-      //user is not already typing, focus our chat text form
+      //user is not already typing, focus input
       chatInput.focus();
     }
   }

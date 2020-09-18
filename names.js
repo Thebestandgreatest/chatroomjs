@@ -1,3 +1,12 @@
+//THIS IS NOT MY CODE
+//CREDIT TO THOMAS Konings
+//GITHUB https://gist.github.com/tkon99/4c98af713acc73bed74c
+
+/*
+(c) by Thomas Konings
+Random Name Generator for Javascript
+*/
+
 function capFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

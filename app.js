@@ -1,6 +1,7 @@
-var express = require('express');
-var app = express();
-var Name = require('./names.js');
+const express = require('express');
+const app = express();
+const Name = require('./names.js');
+const port = process.env.PORT;
 
 var server = require('http').createServer(app);
 
@@ -22,20 +23,23 @@ var names = [];
 
 var io = require('socket.io')(server);
 
-//listens for connection from client
+//listens for new connection from a client
 io.sockets.on('connection', function(socket){
+	//generates a nickname for the client and puts it in the active users list
   socket.username = Name.generate();
   console.log(socket.username +' joined');
   var socketId = Math.random();
   clients[socketId] = socket;
 	clients[socketId].emit('send-nickname', socket.username);
 	names.push(socket.username);
-  //loads all saved messages from ram into client that just connected in the chat
+
+  //loads all saved messages from memory into client that just connected
   for (var j in datalist) {
    clients[socketId].emit('addToChat', datalist[j][0] ,datalist[j][1]);
  	}
 
 	for (var i in clients) {
+		//sends connection message to all clients
 		clients[i].emit('addToChat', socket.username + ' connected', 'admin');
 	}
 	saveMessage(socket.username + ' connected', 'admin');
@@ -60,20 +64,25 @@ io.sockets.on('connection', function(socket){
     console.log(socket.username + ' disconnected ' + names.length);
 
 		for (var i in clients) {
+			//sends message to all connected clients
 			var message = socket.username + ' disconnected'
 			clients[i].emit('addToChat', message, 'admin');
 			saveMessage(message,'admin')
 
+			//removes disconnected client from active users list
 			clients[i].emit('update-names', names);
 		}
 
+		//removes client from socket list
     delete clients[socketId];
 		if (names.length == 0) {
+			//clears history if no users are connected
 			console.log('history cleared')
 	    datalist = [];
 	  }
 	});
 });
 
-server.listen(process.env.PORT);
-console.log('server is listening on port ' + process.env.PORT);
+//listens on specified port
+server.listen(port);
+console.log('server is listening on port ' + port);
