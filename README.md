@@ -1,6 +1,7 @@
 # chatroomjs
 <p>nodejs based realtime chatroom</p>
 <h1>Current Features</h1>
+<p>Live chat with all connected</p>
 <p>Randomly generated usernames on join</p>
 <p>See all active users</p>
 <p>Clear chat history when there are no people connected</p>
