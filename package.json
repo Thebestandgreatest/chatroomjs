@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "test": "echo app.js",
+	"start": "node app.js"
   },
   "author": "me",
   "license": "ISC",
