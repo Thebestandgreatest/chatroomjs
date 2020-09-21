@@ -27,7 +27,6 @@ var io = require('socket.io')(server);
 io.sockets.on('connection', function(socket){
 	//generates a nickname for the client and puts it in the active users list
   socket.username = Name.generate();
-  console.log(socket.username +' joined');
   var socketId = Math.random();
   clients[socketId] = socket;
 	clients[socketId].emit('send-nickname', socket.username);
@@ -51,7 +50,6 @@ io.sockets.on('connection', function(socket){
 
 //listens for message sent
   socket.on('sendMsgToServer',function(data, name){
-    console.log(socket.username + ' said ' + data);
     saveMessage(data,socket.username);
     for (var i in clients){
       clients[i].emit('addToChat', data, socket.username);
@@ -61,7 +59,6 @@ io.sockets.on('connection', function(socket){
 //listens for client disconnect
   socket.on('disconnect',function(){
 		names.splice(names.indexOf(socket.username), 1);
-    console.log(socket.username + ' disconnected ' + names.length);
 
 		for (var i in clients) {
 			//sends message to all connected clients
@@ -77,7 +74,6 @@ io.sockets.on('connection', function(socket){
     delete clients[socketId];
 		if (names.length == 0) {
 			//clears history if no users are connected
-			console.log('history cleared')
 	    datalist = [];
 	  }
 	});
