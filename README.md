@@ -1,5 +1,6 @@
 # chatroomjs
-<p>nodejs based realtime chatroom</p>
+<p>A Node.js based real-time chatroom</p>
+<p>A live implemenatation of this is at (https://chatbot-hjs.herokuapp.com/). Because it is a free service, it may take a few seconds longer to wake up if it hasn't been in use.</p>
 <h1>Current Features</h1>
 <p>Live chat with all connected</p>
 <p>Randomly generated usernames on join</p>
