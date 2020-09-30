@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const Name = require('./names.js');
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 var server = require('http').createServer(app);
 
